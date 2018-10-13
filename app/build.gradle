@@ -3,7 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
+<<<<<<< HEAD
         applicationId "com.quiroga.shoppinglist"
+=======
+        applicationId "com.quiroga.ingredientslist"
+>>>>>>> 6cf011be1f918c444b7c93ea1698b9114981b255
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

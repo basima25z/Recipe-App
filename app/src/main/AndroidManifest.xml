@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.quiroga.shoppinglist">
+=======
+    package="com.quiroga.ingredientslist">
+>>>>>>> 6cf011be1f918c444b7c93ea1698b9114981b255
 
     <application
         android:allowBackup="true"
