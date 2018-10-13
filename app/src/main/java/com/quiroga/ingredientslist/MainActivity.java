@@ -25,13 +25,11 @@ import java.lang.String;
 import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.TextView;
-<<<<<<< HEAD
-
-=======
 import android.widget.Button; //BZ
 import android.content.Intent; //BZ
 import android.view.View;
->>>>>>> 4f2c75a11a20bf5f7cb23bf03b61314acca428f2
+
+import com.quiroga.shoppinglist.R;
 
 
 public class MainActivity extends AppCompatActivity {
