@@ -24,7 +24,7 @@ import java.lang.String;
 import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import android.view.View;
+
 
 
 public class MainActivity extends AppCompatActivity {
