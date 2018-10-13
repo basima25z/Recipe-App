@@ -1,5 +1,6 @@
 package com.quiroga.ingredientslist;
 
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,14 +25,25 @@ import java.lang.String;
 import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.TextView;
+<<<<<<< HEAD
 
+=======
+import android.widget.Button; //BZ
+import android.content.Intent; //BZ
+import android.view.View;
+>>>>>>> 4f2c75a11a20bf5f7cb23bf03b61314acca428f2
 
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     ArrayList<String> ingredientList = null;
     ArrayAdapter<String> adapter = null;
     ListView lv = null;
+
+    Button btnShare;
+
 
 
     @Override
@@ -89,6 +101,37 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btnShare = (Button) findViewById(R.id.shareButton);
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent = new Intent(android.content.Intent.ACTION_SENDTO, Uri.fromParts("mailto","",null));
+
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Shopping List");
+
+                StringBuilder sb = new StringBuilder();
+                for(String s : ingredientList)
+                {
+                    sb.append(s);
+                    sb.append("\n");
+                }
+
+                shareIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
+                startActivity(shareIntent.createChooser(shareIntent, "Choose the app to send: " ));
+
+
+
+
+            }
+        });
+
+
+
+
+
+
     }//onCreate
 
     private String preferredCase(String s) {

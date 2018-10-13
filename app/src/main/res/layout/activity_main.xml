@@ -28,5 +28,15 @@
         app:layout_constraintEnd_toEndOf="parent"
     />
 
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="16dp"
+        android:text="Share"
+        app:layout_constraintBottom_toTopOf="@+id/fab"
+        app:layout_constraintEnd_toEndOf="@id/fab" />
+
 
 </android.support.constraint.ConstraintLayout>
