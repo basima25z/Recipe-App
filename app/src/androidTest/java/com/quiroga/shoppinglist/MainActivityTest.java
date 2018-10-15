@@ -31,6 +31,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 //User Story #7: Shopping List
+//As a person who buys groceries, I want to be able to write a grocery list within the app so I know what to buy when I’m at the supermarket.
 
 //Given the user is typing a list,
 // when the user presses ok,

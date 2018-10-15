@@ -34,7 +34,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 //User Story #7: Shopping List
-
+//As a person who buys groceries, I want to be able to write a grocery list within the app so I know what to buy when I’m at the supermarket.
 //Given that the user has a list and they want to delete an item,
 // when the user presses the item,
 // then the screen should ask the user whether they want to remove the item or not.
