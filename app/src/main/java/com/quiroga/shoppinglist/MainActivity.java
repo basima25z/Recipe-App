@@ -23,6 +23,9 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.content.Intent;
 
+
+//Citation: Daniel Ross
+//http://www.javacjava.com/ShoppingListOne.html
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> shoppingList = null;
@@ -85,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent shareIntent = new Intent(android.content.Intent.ACTION_SENDTO, Uri.fromParts("mailto","",null));
                 Intent shareIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "",null));
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Shopping List");
                 StringBuilder sb = new StringBuilder();

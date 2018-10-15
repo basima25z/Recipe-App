@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+   // buildToolsVersion'22.0.2'//VOGELLA
+
     defaultConfig {
         applicationId "com.quiroga.shoppinglist"
         minSdkVersion 19
@@ -9,7 +11,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,4 +30,30 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-annotations:28.0.0' //ESPRESSO
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'//ESPRESSO
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'//ESPRESSO
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'//ESPRESSO
+
+//    androidtestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+//       exclude group: 'com.android.support', module: 'support-annotations'
+//   })//VOGELLA
+//
+//     //add this for intent mocking support
+//    androidtestImplementation 'com.android.support.test.espresso:espresso-intents:2.2.2'//VOGELLA
+//
+//     //add this for webview testing support
+//    androidtestImplementation 'com.android.support.test.espresso:espresso-web:2.2.2'//VOGELLA
+
 }
+//dependencies {//stackoverflow
+//    androidTestCompile 'com.android.support.test:runner:0.5'
+//
+//    androidTestCompile 'com.android.support.test:runner:0.4'
+//    // Set this dependency to use JUnit 4 rules
+//    androidTestCompile 'com.android.support.test:rules:0.4'
+//    // Set this dependency to build and run Espresso tests
+//    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+//    // Set this dependency to build and run UI Automator tests
+//    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+//}
