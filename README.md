@@ -1,5 +1,6 @@
 # project-ramsay
 project-ramsay created by GitHub Classroom
+
 For user story #7, sharing a shopping list, which was tested for in MainActivityTest5, 2 out of the 4 scenarios could not be 
 tested for as it dealt with an email app that I had no control over. This is because it was not automated due to the user 
 having to log into their email account in order to send the list to a recipent. However, the espresso test can work below if 
