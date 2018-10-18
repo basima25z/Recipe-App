@@ -26,7 +26,6 @@ public class IngredientsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listData = new ArrayList<>();
-
         data = new String[]{"anddoille\n",
                 "artichoke\n" ,
                 "asparagus\n" ,
