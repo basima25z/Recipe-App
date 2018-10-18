@@ -1,6 +1,7 @@
 package com.quiroga.shoppinglist;
 
 
+import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -18,6 +19,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -29,23 +31,24 @@ import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
-//User Story #7: Shopping List
-//As a person who buys groceries, I want to be able to write a grocery list within the app so I know what to buy when I’m at the supermarket.
-
-//Given the user is typing a list,
-// when the user presses ok,
-// then a new item should be created.
+//User Story #1: Ingredients List
+//As a person who cooks, I want to add ingredients (that I have) to a list so I know what I have.
+//
+// Given that the user has a list and they want to delete an item,
+// when the user presses the item,
+// then the screen should ask the user whether they want to remove the item or not.
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class IngredientsActivityTest3 {
 
     @Rule
     public ActivityTestRule<IngredientsActivity> ingredientsActivityTestRule = new ActivityTestRule<>(IngredientsActivity.class);
 
     @Test
-    public void ingredientsActivityTest() {
+    public void ingredientsActivityTest3() {
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.fab),
                         childAtPosition(
@@ -75,28 +78,52 @@ public class MainActivityTest {
                                 3)));
         appCompatButton.perform(scrollTo(), click());
 
-
-        ViewInteraction textView = onView(
-                allOf(withId(android.R.id.text1), withText("Test"),
+        DataInteraction appCompatTextView = onData(anything())
+                .inAdapterView(allOf(withId(R.id.listView),
                         childAtPosition(
-                                allOf(withId(R.id.listView),
-                                        childAtPosition(
-                                                IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                                0)),
+                                withClassName(is("android.widget.LinearLayout")),
+                                0)))
+                .atPosition(0);
+        appCompatTextView.perform(click());
+
+        ViewInteraction appCompatButton2 = onView(
+                allOf(withId(android.R.id.button1), withText("Yes"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.ScrollView")),
+                                        0),
+                                3)));
+        appCompatButton2.perform(scrollTo(), click());
+
+//        ViewInteraction imageButton = onView(
+//                allOf(withId(R.id.fab),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withId(android.R.id.content),
+//                                        0),
+//                                2),
+//                        isDisplayed()));
+//        imageButton.check(matches(isDisplayed()));
+
+        ViewInteraction listView = onView(
+                allOf(withId(R.id.listView),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView.check(matches(isDisplayed()));
+        listView.check(matches(isDisplayed()));
 
-        ViewInteraction textView2 = onView(
-                allOf(withId(android.R.id.text1), withText("Test"),
+        ViewInteraction listView2 = onView(
+                allOf(withId(R.id.listView),
                         childAtPosition(
-                                allOf(withId(R.id.listView),
-                                        childAtPosition(
-                                                IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                                0)),
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView2.check(matches(withText("Test")));
+        listView2.check(matches(isDisplayed()));
 
     }
 

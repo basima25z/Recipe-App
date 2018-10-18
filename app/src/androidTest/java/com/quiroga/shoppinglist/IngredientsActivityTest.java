@@ -30,16 +30,16 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
-//User Story #7: Shopping List
-//As a person who buys groceries, I want to be able to write a grocery list within the app so I know what to buy when I’m at the supermarket.
-
+//User Story #1: Ingredients List
+//As a person who cooks, I want to add ingredients (that I have) to a list so I know what I have.
+//
 //Given the user is typing a list,
 // when the user presses ok,
 // then a new item should be created.
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class IngredientsActivityTest {
 
     @Rule
     public ActivityTestRule<IngredientsActivity> ingredientsActivityTestRule = new ActivityTestRule<>(IngredientsActivity.class);

@@ -30,22 +30,22 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
-//User Story #7: Shopping List
-//As a person who buys groceries, I want to be able to write a grocery list within the app so I know what to buy when I’m at the supermarket.
-
-//Given the user is typing a list,
-// when the user presses ok,
-// then a new item should be created.
+//User Story #1: Ingredients List
+//As a person who cooks, I want to add ingredients (that I have) to a list so I know what I have.
+//
+// Given that the user has opened the list before,
+// when the user opens the list again,
+// then the list should have the same information in it as it did the last time it was closed.
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class IngredientsActivityTest4 {
 
     @Rule
     public ActivityTestRule<IngredientsActivity> ingredientsActivityTestRule = new ActivityTestRule<>(IngredientsActivity.class);
 
     @Test
-    public void ingredientsActivityTest() {
+    public void ingredientsActivityTest4() {
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.fab),
                         childAtPosition(
@@ -75,6 +75,15 @@ public class MainActivityTest {
                                 3)));
         appCompatButton.perform(scrollTo(), click());
 
+//        ViewInteraction imageButton = onView(
+//                allOf(withId(R.id.fab),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withId(android.R.id.content),
+//                                        0),
+//                                2),
+//                        isDisplayed()));
+//        imageButton.check(matches(isDisplayed()));
 
         ViewInteraction textView = onView(
                 allOf(withId(android.R.id.text1), withText("Test"),
