@@ -19,13 +19,13 @@ import java.util.List;
 public class IngredientsActivity extends AppCompatActivity {
 
     String[] data;
-    List<IngredientObject> listData;
+  //  List<IngredientObject> listData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listData = new ArrayList<>();
+     //   listData = new ArrayList<>();
         data = new String[]{"anddoille\n",
                 "artichoke\n" ,
                 "asparagus\n" ,
