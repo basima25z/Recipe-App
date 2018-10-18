@@ -25,18 +25,7 @@ public class IngredientsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*Button Add = (Button) findViewById(R.id.addIngredients);
-        Add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "This is my Toast message!", Toast.LENGTH_LONG).show();
-            }
-        });*/
-
-
-
         listData = new ArrayList<>();
-        //listData.add(new DataItem(R.drawable.tomato,"Tomatoe"));
 
         data = new String[]{"anddoille\n",
                 "artichoke\n" ,
