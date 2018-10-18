@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter = null;
     ListView listView = null;
     Button btnShare;
+    Button btnIngredients; // A temporary button for navigating to the IngredientsActivity until the actual navigation system is built
 
 
     @Override
@@ -100,11 +101,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(shareIntent.createChooser(shareIntent, "Choose the app to send: " ));
             }
         });
+
+        btnIngredients = (Button) findViewById(R.id.ingredientsButton);
+        btnIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToIngredientsActivity();
+            }
+        });
     }//onCreate
 
 
 
-    
+    private void goToIngredientsActivity(){
+        Intent intent = new Intent(this, IngredientsActivity.class);
+        startActivity(intent);
+    }
 
 
 

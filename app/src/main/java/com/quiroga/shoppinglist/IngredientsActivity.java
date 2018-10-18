@@ -31,8 +31,6 @@ public class IngredientsActivity extends AppCompatActivity {
     ArrayList<String> ingredientList = null;
     ArrayAdapter<String> adapter = null;
     ListView listView = null;
-    Button btnShare;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +82,6 @@ public class IngredientsActivity extends AppCompatActivity {
         });
 
     }//onCreate
-
-
-
-
-
 
 
     private String upperCase(String s) {
