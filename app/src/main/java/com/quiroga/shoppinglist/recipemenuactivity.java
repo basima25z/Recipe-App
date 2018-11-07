@@ -39,7 +39,7 @@ public class recipemenuactivity extends AppCompatActivity {
             }
         });
 
-        recipeList = getArrayValue(getApplicationContext());
+        /*recipeList = getArrayValue(getApplicationContext());
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipeList);
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
@@ -53,14 +53,10 @@ public class recipemenuactivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Error Removing Element", Toast.LENGTH_LONG).show();
                 }
             }
-        });
-    }
-    private void goToIngredientsActivity(){
-        Intent intent = new Intent(this, IngredientsActivity.class);
-        startActivity(intent);
+        });*/
     }
 
-    private String upperCase(String s) {
+    /*private String upperCase(String s) {
         if (s.isEmpty())
             return s;
         return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
@@ -92,5 +88,5 @@ public class recipemenuactivity extends AppCompatActivity {
                 listView.setAdapter(adapter);
             }
         });
-}
+}*/
 }

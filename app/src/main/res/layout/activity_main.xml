@@ -7,17 +7,22 @@
     tools:context=".MainActivity">
 
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout2"
+        android:layout_width="247dp"
+        android:layout_height="512dp"
+        android:layout_marginEnd="7dp"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/SearchAddRecipes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="396dp"
-            android:layout_height="593dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="2dp"></ListView>
     </LinearLayout>
@@ -57,5 +62,17 @@
         android:text="Ingredients"
         app:layout_constraintBottom_toTopOf="@+id/shareButton"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/SearchAddRecipes"
+        android:layout_width="113dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="17dp"
+        android:text="Recipes"
+        app:layout_constraintBottom_toTopOf="@+id/ingredientsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RecipeActivity extends AppCompatActivity {
 
@@ -14,16 +15,15 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipelayout);
 
-        Button Recipes = (Button) findViewById(R.id.SearchAddRecipes);
-        Recipes.setOnClickListener(new View.OnClickListener() {
+        Button AddRecipes = (Button) findViewById(R.id.Add);
+        AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(FirstScreen.this, SecondScreen.class);--
                 //EditText Title = (EditText)findViewById(R.id.AddRecipe);
-                //string
-                //i.putExtra("STRING_I_NEED", strName);
-                //Intent intent = new Intent(MainActivity.this, recipemenuactivity.class);
-                //startActivity(intent);
+                //string str =
+                Intent intent = new Intent(RecipeActivity.this, recipemenuactivity.class);
+                Toast.makeText(getApplicationContext(),"Recipe Added!", Toast.LENGTH_LONG).show();
+                startActivity(intent);
             }
         });
         //save recipe and return to recipeMenu with the title of the new recipe and add it to the list

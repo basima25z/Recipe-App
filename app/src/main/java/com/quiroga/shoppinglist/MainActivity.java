@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        /*Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);*/
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
@@ -109,6 +109,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button recipes = (Button) findViewById(R.id.SearchAddRecipes);
+        recipes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, recipemenuactivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnIngredients = (Button) findViewById(R.id.ingredientsButton);
         btnIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,21 +127,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }//onCreate
 
-
-
     private void goToIngredientsActivity(){
         Intent intent = new Intent(this, IngredientsActivity.class);
         startActivity(intent);
     }
-
-
 
     private String upperCase(String s) {
         if (s.isEmpty())
             return s;
         return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
     }//upperCase
-
 
     public static void storeArrayValue( ArrayList<String> inArrayList, Context context) {
         Set<String> write = new HashSet<String>(inArrayList);
@@ -148,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
         tmp = WordSearchGetPrefs.getStringSet("myArray", tmp);
         return new ArrayList<String>(tmp);
     }
-
 
     public void remove(String item, final int position){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
