@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Ramsay</string>
+    <string name="app_name">ListDisplay</string>
+    <string name="action_settings">Settings</string>
 </resources>

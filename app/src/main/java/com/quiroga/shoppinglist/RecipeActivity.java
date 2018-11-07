@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RecipeActivity extends AppCompatActivity {
+    String TitleStr = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +21,12 @@ public class RecipeActivity extends AppCompatActivity {
         AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //EditText Title = (EditText)findViewById(R.id.AddRecipe);
-                //string str =
+                EditText RecipeTitle = (EditText) findViewById(R.id.recipeTitle);
+                String RecipeTitleStr = RecipeTitle.getText().toString();
                 Intent intent = new Intent(RecipeActivity.this, recipemenuactivity.class);
-                Toast.makeText(getApplicationContext(),"Recipe Added!", Toast.LENGTH_LONG).show();
+                intent.putExtra("TitleStr", RecipeTitleStr );
                 startActivity(intent);
+                //Toast.makeText(getApplicationContext(),"Recipe Added!", Toast.LENGTH_LONG).show();
             }
         });
         //save recipe and return to recipeMenu with the title of the new recipe and add it to the list
