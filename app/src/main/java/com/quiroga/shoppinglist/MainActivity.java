@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnShare;
     Button btnIngredients; // A temporary button for navigating to the IngredientsActivity until the actual navigation system is built
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
@@ -109,6 +107,15 @@ public class MainActivity extends AppCompatActivity {
                 goToIngredientsActivity();
             }
         });
+
+        Button Recipes = (Button) findViewById(R.id.SearchAddRecipes);
+        Recipes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, recipemenuactivity.class);
+                startActivity(intent);
+            }
+        });
     }//onCreate
 
 
@@ -117,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, IngredientsActivity.class);
         startActivity(intent);
     }
-
-
 
     private String upperCase(String s) {
         if (s.isEmpty())
@@ -162,4 +167,5 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
 }//end of class
