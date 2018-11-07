@@ -2,8 +2,10 @@ package com.quiroga.shoppinglist;
 
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,6 +44,11 @@ public class IngredientsActivity extends AppCompatActivity {
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
