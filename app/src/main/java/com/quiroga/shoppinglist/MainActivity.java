@@ -2,7 +2,6 @@ package com.quiroga.shoppinglist;
 
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,14 +27,14 @@ import android.content.Intent;
 
 //Citation: Daniel Ross
 //http://www.javacjava.com/ShoppingListOne.html
+
+//Despite the name, this is the shopping list activity.
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> shoppingList = null;
     ArrayAdapter<String> adapter = null;
     ListView listView = null;
     Button btnShare;
-    Button btnIngredients; // A temporary button for navigating to the IngredientsActivity until the actual navigation system is built
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);*/
+        //ActionBar actionbar = getSupportActionBar();
+       // actionbar.setDisplayHomeAsUpEnabled(true);
+       // actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnShare = (Button) findViewById(R.id.shareButton);
+        btnShare = findViewById(R.id.shareButton);
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,32 +104,28 @@ public class MainActivity extends AppCompatActivity {
                     sb.append("\n");
                 }
                 shareIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-                startActivity(shareIntent.createChooser(shareIntent, "Choose the app to send: " ));
+                startActivity(Intent.createChooser(shareIntent, "Choose the app to send: " ));
             }
         });
 
-        Button recipes = (Button) findViewById(R.id.SearchAddRecipes);
+        Button recipes = findViewById(R.id.SearchAddRecipes);
         recipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, recipemenuactivity.class);
+                Intent intent = new Intent(MainActivity.this, RecipeMenuActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnIngredients = (Button) findViewById(R.id.ingredientsButton);
+        Button btnIngredients = findViewById(R.id.ingredientsButton);
         btnIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToIngredientsActivity();
-            }
+
+                Intent intent = new Intent(MainActivity.this, IngredientsActivity.class);
+                startActivity(intent);            }
         });
     }//onCreate
-
-    private void goToIngredientsActivity(){
-        Intent intent = new Intent(this, IngredientsActivity.class);
-        startActivity(intent);
-    }
 
     private String upperCase(String s) {
         if (s.isEmpty())
@@ -138,19 +133,19 @@ public class MainActivity extends AppCompatActivity {
         return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
     }//upperCase
 
-    public static void storeArrayValue( ArrayList<String> inArrayList, Context context) {
-        Set<String> write = new HashSet<String>(inArrayList);
+    public static void storeArrayValue(ArrayList<String> inArrayList, Context context) {
+        Set<String> write = new HashSet<>(inArrayList);
         SharedPreferences wordSearch = context.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = wordSearch.edit();
         editor.putStringSet("myArray", write);
-        editor.commit();
+        editor.apply(); // Changed from editor.commit(); to get rid of an error
     }
 
     public static ArrayList getArrayValue( Context dan) {
         SharedPreferences WordSearchGetPrefs = dan.getSharedPreferences("dbArrayValues",Activity.MODE_PRIVATE);
-        Set<String> tmp = new HashSet<String>();
+        Set<String> tmp = new HashSet<>();
         tmp = WordSearchGetPrefs.getStringSet("myArray", tmp);
-        return new ArrayList<String>(tmp);
+        return new ArrayList<>(tmp);
     }
 
     public void remove(String item, final int position){
