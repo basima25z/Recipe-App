@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class RecipeActivity extends AppCompatActivity {
     String TitleStr = null;
@@ -23,7 +21,7 @@ public class RecipeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText RecipeTitle = (EditText) findViewById(R.id.recipeTitle);
                 String RecipeTitleStr = RecipeTitle.getText().toString();
-                Intent intent = new Intent(RecipeActivity.this, recipemenuactivity.class);
+                Intent intent = new Intent(RecipeActivity.this, RecipeMenuActivity.class);
                 intent.putExtra("TitleStr", RecipeTitleStr );
                 startActivity(intent);
             }
