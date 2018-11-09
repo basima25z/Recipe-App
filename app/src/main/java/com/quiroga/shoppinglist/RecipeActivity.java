@@ -26,9 +26,7 @@ public class RecipeActivity extends AppCompatActivity {
                 Intent intent = new Intent(RecipeActivity.this, recipemenuactivity.class);
                 intent.putExtra("TitleStr", RecipeTitleStr );
                 startActivity(intent);
-                //Toast.makeText(getApplicationContext(),"Recipe Added!", Toast.LENGTH_LONG).show();
             }
         });
-        //save recipe and return to recipeMenu with the title of the new recipe and add it to the list
     }
 }
