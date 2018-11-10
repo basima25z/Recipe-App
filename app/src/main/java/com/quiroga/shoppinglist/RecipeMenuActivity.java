@@ -1,25 +1,22 @@
 package com.quiroga.shoppinglist;
 
-import android.app.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import java.util.ArrayList;
 
-class RecipeInfo{
-    String Title;
-    String Ingredients;
-    String Directions;
-}
+import com.google.gson.Gson;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class RecipeMenuActivity extends AppCompatActivity {
     ArrayList<RecipeInfo> RecipeList = new ArrayList<>();
-    ArrayList<String> RecipeTitles = new ArrayList<>();
+    ArrayList<String> RecipeTitles = new ArrayList<String>();
     private ListView listView;
 
     @Override
@@ -28,7 +25,7 @@ public class RecipeMenuActivity extends AppCompatActivity {
         setContentView(R.layout.recipemenu);
 
         //recipe title array
-        RecipeTitles.add("Chicken Alfredo");
+        RecipeTitles.add(0,"Chicken Alfredo");
         //recipe data
         addRecipe("Chicken Alfredo","Chicken, Pasta, Alfredo Sauce","1) Boil water and cook pasta\n2)Saute chicken till well done\n3)Mix chicken, pasta and sauce");
         /*RecipeList.add(2,"Easy","Spaghetti");
@@ -48,31 +45,36 @@ public class RecipeMenuActivity extends AppCompatActivity {
             RecipeTitles.add(Title);
         }
 
+        Gson gson = new Gson();
+        final String Recipe = gson.toJson(RecipeList);
+
         //new recipe activity for clicked on recipes in the listview, unfinished
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
-                Intent intent = new Intent(recipemenuactivity.this, RecipeActivity.class);
-                intent.putExtra("TitleStr",RecipeList.get(0));
+                Intent intent = new Intent(RecipeMenuActivity.this, RecipeClickActivity.class);
+                intent.putExtra("TitleStr", RecipeTitles);
+                intent.putExtra("RecipeStr", Recipe);
                 startActivity(intent);
             }
-        });*/
+        });
 
         Button AddRecipes = (Button) findViewById(R.id.AddRecipe);
         AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RecipeMenuActivity.this, RecipeActivity.class);
+                Intent intent = new Intent(RecipeMenuActivity.this, AddRecipeActivity.class);
                 startActivity(intent);
             }
         });
 
         }//onCreate
     //recipe data array method
-    public void addRecipe(String Title, String Ingredients, String Directions){
+    public RecipeInfo addRecipe(String Title, String Ingredients, String Directions){
         RecipeInfo newRecipe = new RecipeInfo();
         newRecipe.Title = Title;
         newRecipe.Ingredients = Ingredients;
         newRecipe.Directions = Directions;
         RecipeList.add(newRecipe);
+        return newRecipe;
     }
 }
