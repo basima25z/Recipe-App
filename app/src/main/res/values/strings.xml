@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">Cooking for Dummies</string>
+    <string name="app_name">Ramsay</string>
+    <string name="shareButton">Share</string>
+    <string name="ingredientsButton">Ingredients</string>
+    <string name="recipesButton">Recipes</string>
     <string name="action_settings">Settings</string>
 </resources>

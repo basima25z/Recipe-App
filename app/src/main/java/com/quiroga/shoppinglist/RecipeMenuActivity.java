@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
 class RecipeInfo{
@@ -18,12 +17,10 @@ class RecipeInfo{
     String Directions;
 }
 
-public class recipemenuactivity extends AppCompatActivity {
+public class RecipeMenuActivity extends AppCompatActivity {
     ArrayList<RecipeInfo> RecipeList = new ArrayList<>();
     ArrayList<String> RecipeTitles = new ArrayList<>();
     private ListView listView;
-
-public class RecipeMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +75,4 @@ public class RecipeMenuActivity extends AppCompatActivity {
         newRecipe.Directions = Directions;
         RecipeList.add(newRecipe);
     }
-}
 }

@@ -1,7 +1,10 @@
 package com.quiroga.shoppinglist;
 
 import android.net.Uri;
+import android.support.annotation.LayoutRes;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +27,8 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.content.Intent;
 
+import org.xmlpull.v1.XmlPullParser;
+
 
 //Citation: Daniel Ross
 //http://www.javacjava.com/ShoppingListOne.html
@@ -39,7 +44,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.drawer);
+
+        // Make the activity's layout a child of the navigation drawer
+        XmlPullParser activityMain = getResources().getLayout(R.layout.activity_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        getLayoutInflater().inflate(activityMain, drawer);
 
         shoppingList = getArrayValue(getApplicationContext());
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
@@ -48,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //ActionBar actionbar = getSupportActionBar();
-       // actionbar.setDisplayHomeAsUpEnabled(true);
-       // actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
