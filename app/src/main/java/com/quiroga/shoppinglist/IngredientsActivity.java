@@ -2,10 +2,14 @@ package com.quiroga.shoppinglist;
 
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,6 +29,8 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.content.Intent;
 
+import org.xmlpull.v1.XmlPullParser;
+
 
 //Citation: Daniel Ross
 //http://www.javacjava.com/ShoppingListOne.html
@@ -33,11 +39,17 @@ public class IngredientsActivity extends AppCompatActivity {
     ArrayList<String> ingredientList = null;
     ArrayAdapter<String> adapter = null;
     ListView listView = null;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ingredients_activity);
+        setContentView(R.layout.drawer);
+
+        // Make the activity's layout a child of the navigation drawer
+        XmlPullParser activityMain = getResources().getLayout(R.layout.ingredients_activity);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        getLayoutInflater().inflate(activityMain, drawerLayout);
 
         ingredientList = getArrayValue(getApplicationContext());
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredientList);
@@ -49,6 +61,36 @@ public class IngredientsActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        drawerLayout.closeDrawers();
+
+
+
+                        switch(menuItem.getItemId()){
+                            case R.id.nav_shopping_list :
+                                Intent ingredientsIntent = new Intent(IngredientsActivity.this, MainActivity.class);
+                                startActivity(ingredientsIntent);
+                                break;
+                            case R.id.nav_ingredients:
+                                // Do nothing
+                                break;
+                            case R.id.nav_recipes:
+                                Intent recipesIntent = new Intent(IngredientsActivity.this, RecipeMenuActivity.class);
+                                startActivity(recipesIntent);
+                                break;
+                        }
+
+                        return true;
+                    }
+                });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
@@ -90,6 +132,16 @@ public class IngredientsActivity extends AppCompatActivity {
 
     }//onCreate
 
+    // Opens the drawer when the hamburger button in the toolbar is pressed
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private String upperCase(String s) {
         if (s.isEmpty())
