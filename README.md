@@ -23,4 +23,4 @@ Initially, we wanted to implement user story number two along with number six, b
 
 For user story #9, we wanted the user to be able to check out a list of recipes given by the app, each with its own unique data. We also wanted the user to be able to add their own recipes to the list os existing recipes. So if a user adds a recipe, its title will show on the recipe menu list. Unfortunately, we were unable to get the newly added recipe to display its info. 
 
-We were able to deliver on user story #10, but since doing so affected the heirarchies of many of the xml files, all of the tests written in the previous iteration now fail. Fixing those tests is only a matter of pointing them back at the right views, but we didn't have time to complete that.
+We were able to deliver on user story #10, but since doing so affected the heirarchies of many of the xml files, all of the tests written in the previous iteration now fail. Fixing those tests is only a matter of pointing them back at the right views (the funcitonalities that were being tested haven't changed), but we didn't have time to complete that.
