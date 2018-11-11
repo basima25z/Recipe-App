@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button recipeHistory = findViewById(R.id.RecipeHistoryButton);
-        recipes.setOnClickListener(new View.OnClickListener() {
+        recipeHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RecipeHistory.class);
@@ -174,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
         btnIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, IngredientsActivity.class);
                 startActivity(intent);            }
         });
