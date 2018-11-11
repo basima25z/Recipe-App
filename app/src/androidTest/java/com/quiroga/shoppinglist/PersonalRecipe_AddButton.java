@@ -25,13 +25,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class PersonalRecipe_AddRecipeButton {
+public class PersonalRecipe_AddButton {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void personalRecipe_AddRecipe() {
+    public void personalRecipe_AddButton() {
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.SearchAddRecipes), withText("Recipes"),
                         childAtPosition(
@@ -47,8 +47,8 @@ public class PersonalRecipe_AddRecipeButton {
                 allOf(withId(R.id.AddRecipe), withText("Add Recipe"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
+                                        withId(R.id.drawer_layout),
+                                        1),
                                 1),
                         isDisplayed()));
         appCompatButton2.perform(click());
