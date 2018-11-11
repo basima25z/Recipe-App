@@ -39,7 +39,7 @@ import org.xmlpull.v1.XmlPullParser;
 //Despite the name, this is the shopping list activity.
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<String> shoppingList = null;
+    ArrayList<String> shoppingList = new ArrayList<>();
     ArrayAdapter<String> adapter = null;
     ListView listView = null;
     Button btnShare;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         getLayoutInflater().inflate(activityMain, drawerLayout);
 
-        shoppingList = getArrayValue(getApplicationContext());
+        //shoppingList = getArrayValue(getApplicationContext());
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);

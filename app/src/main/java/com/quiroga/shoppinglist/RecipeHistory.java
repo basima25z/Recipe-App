@@ -33,7 +33,7 @@ import android.widget.Button; //BZ
 import android.content.Intent; //BZ
 
 public class RecipeHistory extends AppCompatActivity {
-    ArrayList<String> recipeHistoryList = null;
+    ArrayList<String> recipeHistoryList = new ArrayList<>();
     ArrayAdapter<String> adapter = null;
     ListView lv = null;
     Button btnShare;
@@ -42,7 +42,8 @@ public class RecipeHistory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recipeHistoryList = getArrayVal(getApplicationContext());
+
+        //recipeHistoryList = getArrayVal(getApplicationContext());
         //Collections.sort(recipeHistoryList);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipeHistoryList);
         lv = (ListView) findViewById(R.id.listView);

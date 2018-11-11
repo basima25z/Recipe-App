@@ -36,7 +36,7 @@ import org.xmlpull.v1.XmlPullParser;
 //http://www.javacjava.com/ShoppingListOne.html
 public class IngredientsActivity extends AppCompatActivity {
 
-    ArrayList<String> ingredientList = null;
+    ArrayList<String> ingredientList = new ArrayList<>();
     ArrayAdapter<String> adapter = null;
     ListView listView = null;
     DrawerLayout drawerLayout;
@@ -51,7 +51,7 @@ public class IngredientsActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         getLayoutInflater().inflate(activityMain, drawerLayout);
 
-        ingredientList = getArrayValue(getApplicationContext());
+        //ingredientList = getArrayValue(getApplicationContext());
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredientList);
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
