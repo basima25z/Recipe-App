@@ -7,19 +7,6 @@
     tools:context=".RecipeHistory">
 
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="226dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginEnd="74dp"
-        android:text="Recipe History"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

@@ -32,7 +32,7 @@ import android.view.View;
 import android.widget.Button; //BZ
 import android.content.Intent; //BZ
 
-public class RecipeHistory extends Activity {
+public class RecipeHistory extends AppCompatActivity {
     ArrayList<String> recipeHistoryList = null;
     ArrayAdapter<String> adapter = null;
     ListView lv = null;
