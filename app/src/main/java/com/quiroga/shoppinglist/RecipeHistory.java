@@ -27,7 +27,6 @@ import java.lang.String;
 import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import android.view.View;
 
 import android.widget.Button; //BZ
 import android.content.Intent; //BZ
