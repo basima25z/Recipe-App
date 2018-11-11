@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         //shoppingList = getArrayValue(getApplicationContext());
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
-        listView =  findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         drawerLayout.closeDrawers();
-
-
 
                         switch(menuItem.getItemId()){
                             case R.id.nav_shopping_list :

@@ -34,7 +34,7 @@
             android:parentActivityName=".RecipeMenuActivity"></activity>
         <activity
             android:name=".RecipeHistory"
-            android:label="@string/title_activity_recipe_history"
+            android:label="@string/recipeHistory"
             android:parentActivityName=".MainActivity"></activity>
     </application>
 

@@ -7,39 +7,31 @@
     android:orientation="vertical"
     tools:context=".RecipeMenuActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="226dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginEnd="74dp"
-        android:text="Recipes"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/ic_launcher_background"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
     <Button
         android:id="@+id/AddRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="266dp"
-        android:layout_marginBottom="417dp"
-        android:text="Add Recipe"
+        android:layout_marginEnd="252dp"
+        android:layout_marginBottom="448dp"
+        android:text="@string/add_recipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
-        android:id="@+id/RecipeList"
-        android:layout_width="368dp"
-        android:layout_height="401dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/lv"
+        android:layout_width="0dp"
+        android:layout_height="420dp"
+        android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -24,8 +24,8 @@ import java.util.ArrayList;
 
 public class RecipeMenuActivity extends AppCompatActivity {
     ArrayList<RecipeInfo> RecipeList = new ArrayList<>();
-    ArrayList<String> RecipeTitles = new ArrayList<String>();
-    private ListView listView;
+    ArrayList<String> RecipeTitles = new ArrayList<>();
+    ListView listView;
     DrawerLayout drawerLayout;
 
     @Override
@@ -34,7 +34,7 @@ public class RecipeMenuActivity extends AppCompatActivity {
         setContentView(R.layout.drawer);
 
         // Make the activity's layout a child of the navigation drawer
-        XmlPullParser activityMain = getResources().getLayout(R.layout.ingredients_activity);
+        XmlPullParser activityMain = getResources().getLayout(R.layout.recipemenu);
         drawerLayout = findViewById(R.id.drawer_layout);
         getLayoutInflater().inflate(activityMain, drawerLayout);
 
@@ -50,7 +50,7 @@ public class RecipeMenuActivity extends AppCompatActivity {
         RecipeTitles.add(4,"Fried Rice");
         addRecipe("Fried Rice","Rice, eggs, Mixed vegetables, Sesame oil, Onions, Soy sauce","1)Use rice cooker to rice at a 1|1.5 ratio of rice and water\n2)Heat oil in skillet and saute onions and vegetables\n3)Scramble 2 eggs separately from vegetables\n4)Mix in rice, add soy sauce, and Enjoy");
 
-        listView = findViewById(R.id.RecipeList);
+        listView = findViewById(R.id.lv);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, RecipeTitles);
         listView.setAdapter(adapter);
 
