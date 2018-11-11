@@ -23,10 +23,10 @@ public class AddRecipeActivity extends AppCompatActivity {
         AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //EditText RecipeTitle = (EditText) findViewById(R.id.recipeTitle);
-                //String RecipeTitleStr = RecipeTitle.getText().toString();
+                EditText RecipeTitle = (EditText) findViewById(R.id.recipeTitle);
+                String RecipeTitleStr = RecipeTitle.getText().toString();
                 Intent intent = new Intent(AddRecipeActivity.this, RecipeMenuActivity.class);
-                //intent.putExtra("TitleStr", RecipeTitleStr );
+                intent.putExtra("TitleStr", RecipeTitleStr );
                 startActivity(intent);
             }
         });

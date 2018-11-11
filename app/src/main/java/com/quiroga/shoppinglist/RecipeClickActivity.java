@@ -15,6 +15,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.DriverManager.println;
+
 public class RecipeClickActivity extends AppCompatActivity {
     String TitleStr = null;
 
@@ -24,7 +26,7 @@ public class RecipeClickActivity extends AppCompatActivity {
         setContentView(R.layout.recipeclicklayout);
 
         Intent intent = getIntent();
-        ArrayList<String> RecipeTitles = intent.getStringArrayListExtra("TitleStr");
+        String RecipeTitle = intent.getStringExtra("TitleStr");
         String Recipe = getIntent().getStringExtra("RecipeStr");
 
         Gson gson = new Gson();
@@ -34,16 +36,14 @@ public class RecipeClickActivity extends AppCompatActivity {
             String Title = info.Title;
             String Ingredients = info.Ingredients;
             String Directions = info.Directions;
-            //Log.i("Recipe Data", info.Title+"-"+info.Ingredients+"-"+info.Directions);
-            TextView title = (TextView)findViewById(R.id.title);
-            title.setText(Title);
-            TextView ingredients = (TextView)findViewById(R.id.ingredients);
-            ingredients.setText(Ingredients);
-            TextView directions = (TextView)findViewById(R.id.directions);
-            directions.setText(Directions);
+            if (Title.equals(RecipeTitle)) {
+                TextView title = (TextView) findViewById(R.id.title);
+                title.setText(Title);
+                TextView ingredients = (TextView) findViewById(R.id.ingredients);
+                ingredients.setText(Ingredients);
+                TextView directions = (TextView) findViewById(R.id.directions);
+                directions.setText(Directions);
+            }
         }
-
-        //Toast.makeText(getApplicationContext(), (CharSequence) "Hello!", Toast.LENGTH_LONG).show();
-
     }
 }

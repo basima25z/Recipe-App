@@ -24,14 +24,17 @@ public class RecipeMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipemenu);
 
-        //recipe title array
+        //recipe title/Data array
         RecipeTitles.add(0,"Chicken Alfredo");
-        //recipe data
         addRecipe("Chicken Alfredo","Chicken, Pasta, Alfredo Sauce","1) Boil water and cook pasta\n2)Saute chicken till well done\n3)Mix chicken, pasta and sauce");
-        /*RecipeList.add(2,"Easy","Spaghetti");
-        RecipeList.add(3,"Shrimp Scampi");
-        RecipeList.add(4,"Ravioli");
-        RecipeList.add(5,"Gnocchi");*/
+        RecipeTitles.add(1,"Pancakes");
+        addRecipe("Pancakes","Pancake Mix, Water","1)Mix water and pancake mix thoroughly\n2)Pour batter in hot oiled pan\n3)Cook 60 seconds one side, flip and cook 30 second");
+        RecipeTitles.add(2,"Carne Asada Tacos");
+        addRecipe("Carne Asada Tacos","Flank Steak, Onions, Green Peppers","1)Season steak with spices(not just salt and pepper)\n2)Chop up onions and peppers\n3)Grill Steak till desired color\n4)Saute onions and peppers\n5)Grill corn tortillas and stack steak and vegetables");
+        RecipeTitles.add(3,"Cheese Burger");
+        addRecipe("Cheese Burger","Ground beef, Burger buns, cheese, lettuce, tomato, onions, pickles ","1) Season beef with salt and pepper\n2)Take a handful of beef and smash it onto a hot skillet, cook for 2-3 minutes\n3)chop up topping\n4)Flip Burger, add cheese, and cook another 2 minutes\n5)Brush inside of buns with butter and toast on skillet\n6)Assemble burger and Enjoy");
+        RecipeTitles.add(4,"Fried Rice");
+        addRecipe("Fried Rice","Rice, eggs, Mixed vegetables, Sesame oil, Onions, Soy sauce","1)Use rice cooker to rice at a 1|1.5 ratio of rice and water\n2)Heat oil in skillet and saute onions and vegetables\n3)Scramble 2 eggs separately from vegetables\n4)Mix in rice, add soy sauce, and Enjoy");
 
         listView = findViewById(R.id.RecipeList);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, RecipeTitles);
@@ -48,11 +51,11 @@ public class RecipeMenuActivity extends AppCompatActivity {
         Gson gson = new Gson();
         final String Recipe = gson.toJson(RecipeList);
 
-        //new recipe activity for clicked on recipes in the listview, unfinished
+        //new recipe activity for clicked on recipes in the listview
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
                 Intent intent = new Intent(RecipeMenuActivity.this, RecipeClickActivity.class);
-                intent.putExtra("TitleStr", RecipeTitles);
+                intent.putExtra("TitleStr", RecipeTitles.get(position));//test
                 intent.putExtra("RecipeStr", Recipe);
                 startActivity(intent);
             }
