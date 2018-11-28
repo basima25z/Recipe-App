@@ -19,6 +19,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".FavRecipeActivity"
+            android:label="@string/favorite"
+            android:parentActivityName=".RecipeMenuActivity"></activity>
+        <activity
             android:name=".IngredientsActivity"
             android:label="@string/ingredients"
             android:parentActivityName=".MainActivity"></activity>

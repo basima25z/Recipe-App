@@ -2,6 +2,7 @@ package com.quiroga.shoppinglist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,17 +17,43 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.xmlpull.v1.XmlPullParser;
 
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeMenuActivity extends AppCompatActivity {
     ArrayList<RecipeInfo> RecipeList = new ArrayList<>();
     ArrayList<String> RecipeTitles = new ArrayList<>();
+    ArrayList<String> FavRecipes = new ArrayList<>();
+    Gson gson = new Gson();
+    String Recipe = "0";
     ListView listView;
     DrawerLayout drawerLayout;
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putStringArrayList("RecipeTitles", RecipeTitles);
+        savedInstanceState.putString("RecipeList", Recipe);
+        savedInstanceState.putStringArrayList("FavRecipes", FavRecipes);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        ArrayList<String> RecipeTitles = savedInstanceState.getStringArrayList("RecipeTitles");
+        ArrayList<String> FavRecipes = savedInstanceState.getStringArrayList("FavRecipes");
+        String Recipe = savedInstanceState.getString("Recipe");
+        Type type = new TypeToken<ArrayList<RecipeInfo>>(){}.getType();
+        ArrayList<RecipeInfo> RecipeList = gson.fromJson(Recipe, type);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +106,8 @@ public class RecipeMenuActivity extends AppCompatActivity {
                                 break;
                             case R.id.nav_ingredients:
                                 Intent recipesIntent = new Intent(RecipeMenuActivity.this, IngredientsActivity.class);
-                                startActivity(recipesIntent);                                break;
+                                startActivity(recipesIntent);
+                                break;
                             case R.id.nav_recipes:
                                 // Do nothing
                                 break;
@@ -93,34 +121,53 @@ public class RecipeMenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null) {
-            String Title = (String) bundle.get("TitleStr");
-            RecipeTitles.add(Title);
+            //FavRecipes = bundle.getStringArrayList("FavArray"); //fetches fav array from click activity
+            String RecipeTitleStr  = (String) bundle.get("RecipeTitleStr");
+            String RecipeIndgStr  = (String) bundle.get("RecipeIndgStr");
+            String RecipeDirStr  = (String) bundle.get("RecipeDirStr");
+            addRecipe(RecipeTitleStr, RecipeIndgStr, RecipeDirStr);
+            RecipeTitles.add(RecipeTitleStr);
         }
 
-        Gson gson = new Gson();
-        final String Recipe = gson.toJson(RecipeList);
-
+        Recipe = gson.toJson(RecipeList);
         //new recipe activity for clicked on recipes in the listview
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
+
                 Intent intent = new Intent(RecipeMenuActivity.this, RecipeClickActivity.class);
-                intent.putExtra("TitleStr", RecipeTitles.get(position));//test
+                intent.putExtra("TitleStr", RecipeTitles.get(position));
                 intent.putExtra("RecipeStr", Recipe);
+                //intent.putExtra("FavArray", FavRecipes); // sends array to clicked recipe for fav button
                 startActivity(intent);
             }
         });
 
-        Button AddRecipes = (Button) findViewById(R.id.AddRecipe);
+        Button AddRecipes = findViewById(R.id.AddRecipe);
         AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RecipeMenuActivity.this, AddRecipeActivity.class);
+                //intent.putStringArrayListExtra("RecipeTitles", RecipeTitles);
+                //intent.putExtra("Recipe", RecipeList);
+                startActivity(intent);
+            }
+        });
+
+        final Button FavRecipes = findViewById(R.id.FavRec);
+        FavRecipes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gson gson = new Gson();
+                final String FavRecipeStr = gson.toJson(FavRecipes);
+
+                Intent intent = new Intent(RecipeMenuActivity.this, FavRecipeActivity.class);
+                //if (FavRecipeStr != null)
+                    //intent.putExtra("FavRecipesMenu", FavRecipeStr); // sends array to display titles
                 startActivity(intent);
             }
         });
 
         }//onCreate
-
     //recipe data array method
     public RecipeInfo addRecipe(String Title, String Ingredients, String Directions){
         RecipeInfo newRecipe = new RecipeInfo();
