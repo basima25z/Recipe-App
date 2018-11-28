@@ -66,21 +66,21 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
+        final NavigationView navView = findViewById(R.id.nav_view);
+        navView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         // set item as selected to persist highlight
+                        navView.getMenu().findItem(R.id.nav_shopping_list).setChecked(false);
                         menuItem.setChecked(true);
-                        // close drawer when item is tapped
-                        drawerLayout.closeDrawers();
 
                         switch(menuItem.getItemId()){
                             case R.id.nav_shopping_list :
                                 // Do nothing
                                 break;
                             case R.id.nav_ingredients:
+
                                 Intent ingredientsIntent = new Intent(MainActivity.this, IngredientsActivity.class);
                                 startActivity(ingredientsIntent);
                                 break;
@@ -90,9 +90,15 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                         }
 
+                        // close drawer when item is tapped
+                        //drawerLayout.closeDrawers();
+
                         return true;
                     }
                 });
+        if(!navView.getMenu().findItem(R.id.nav_shopping_list).isChecked()){
+            navView.getMenu().findItem(R.id.nav_shopping_list).setChecked(true);
+        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
