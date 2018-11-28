@@ -7,26 +7,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class AddRecipeActivity extends AppCompatActivity {
-    String TitleStr = null;
+    ArrayList<String> RecipeTitles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addrecipelayout);
 
-        //ArrayList<RecipeInfo> RecipeList = (ArrayList<RecipeInfo>) getIntent().getSerializableExtra("mylist");
-        //ArrayList<String> RecipeTitles = (ArrayList<String>) getIntent().getSerializableExtra("TitleStr");
-        //Toast.makeText(getApplicationContext(),RecipeTitles.get(0), Toast.LENGTH_LONG).show();
+        Intent intent = getIntent();
+        //RecipeTitles = getIntent().getStringArrayListExtra("RecipeTitles");
+        //ArrayList<RecipeInfo> RecipeList = ("RecipeList");
 
-        Button AddRecipes = (Button) findViewById(R.id.Add);
+        Button AddRecipes = findViewById(R.id.Add);
         AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText RecipeTitle = (EditText) findViewById(R.id.recipeTitle);
+                EditText RecipeTitle = findViewById(R.id.recipeTitle);
                 String RecipeTitleStr = RecipeTitle.getText().toString();
+                EditText RecipeIndg = findViewById(R.id.recipeIndg);
+                String RecipeIndgStr = RecipeIndg.getText().toString();
+                EditText RecipeDir = findViewById(R.id.recipeDir);
+                String RecipeDirStr = RecipeDir.getText().toString();
+
                 Intent intent = new Intent(AddRecipeActivity.this, RecipeMenuActivity.class);
-                intent.putExtra("TitleStr", RecipeTitleStr );
+                intent.putExtra("RecipeTitleStr", RecipeTitleStr);
+                intent.putExtra("RecipeIndgStr", RecipeIndgStr);
+                intent.putExtra("RecipeDirStr", RecipeDirStr);
                 startActivity(intent);
             }
         });
