@@ -25,7 +25,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText RecipeTitle = findViewById(R.id.recipeTitle);
+                EditText RecipeTitle = findViewById(R.id.recipeTitle);//alan; takes edit texts and converts them to a string to send to recipe menu
                 String RecipeTitleStr = RecipeTitle.getText().toString();
                 EditText RecipeIndg = findViewById(R.id.recipeIndg);
                 String RecipeIndgStr = RecipeIndg.getText().toString();

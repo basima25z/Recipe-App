@@ -85,6 +85,7 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
         RecipeTitles.add(4,"Fried Rice");
         addRecipe("Fried Rice","Rice, eggs, Mixed vegetables, Sesame oil, Onions, Soy sauce","1)Use rice cooker to rice at a 1|1.5 ratio of rice and water\n2)Heat oil in skillet and saute onions and vegetables\n3)Scramble 2 eggs separately from vegetables\n4)Mix in rice, add soy sauce, and Enjoy");
 
+        //creates listview
         listView = findViewById(R.id.lv);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, RecipeTitles);
         listView.setAdapter(adapter);
@@ -129,16 +130,16 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null) {
-            //FavRecipes = bundle.getStringArrayList("FavArray"); //fetches fav array from click activity
+            //gets strings from addrecipeactivity
             String RecipeTitleStr  = (String) bundle.get("RecipeTitleStr");
             String RecipeIndgStr  = (String) bundle.get("RecipeIndgStr");
             String RecipeDirStr  = (String) bundle.get("RecipeDirStr");
-            addRecipe(RecipeTitleStr, RecipeIndgStr, RecipeDirStr);
+            addRecipe(RecipeTitleStr, RecipeIndgStr, RecipeDirStr);//adds new recipe to RecipeList array
             RecipeTitles.add(RecipeTitleStr);
         }
 
         Recipe = gson.toJson(RecipeList);
-        //new recipe activity for clicked on recipes in the listview
+        //new recipe activity for clicked on recipes in the listview//sends whole RecipeList to click activity and title for clicked recipe
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
 

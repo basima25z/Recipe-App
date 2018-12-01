@@ -35,6 +35,8 @@ public class RecipeClickActivity extends AppCompatActivity {
         final String RecipeTitle = intent.getStringExtra("TitleStr");
         String Recipe = getIntent().getStringExtra("RecipeStr");
 
+        //alan; code u info sent from recipe menu to a string and then parses through it
+        //uses recipe info variables to assign each string to its appropriate variable then compares the clicked recipe title and the parsed array title to display right info
         Gson gson = new Gson();
         Type type = new TypeToken<List<RecipeInfo>>(){}.getType();
         List<RecipeInfo> RecipeList = gson.fromJson(Recipe, type);
