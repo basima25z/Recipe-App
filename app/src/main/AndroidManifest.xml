@@ -40,6 +40,13 @@
             android:name=".RecipeHistory"
             android:label="@string/recipeHistory"
             android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".RecipeSearch"
+            android:label="@string/RecipeSearch"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".SingleItemView"></activity>
+
     </application>
 
 </manifest>

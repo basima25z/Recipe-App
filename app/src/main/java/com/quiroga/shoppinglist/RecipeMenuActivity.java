@@ -40,8 +40,6 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
     String Recipe = "0";
     ListView listView;
     DrawerLayout drawerLayout;
-    ArrayAdapter <RecipeInfo> adapter; //bas new stuff
-    ArrayList <String> ingredientsCopy = new ArrayList<>();
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -77,7 +75,7 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
         RecipeTitles.add(0,"Chicken Alfredo");
         addRecipe("Chicken Alfredo","Chicken, Pasta, Alfredo Sauce","1) Boil water and cook pasta\n2)Saute chicken till well done\n3)Mix chicken, pasta and sauce");
         RecipeTitles.add(1,"Pancakes");
-        addRecipe("Pancakes","Pancake Mix, Water","1)Mix water and pancake mix thoroughly\n2)Pour batter in hot oiled pan\n3)Cook 60 seconds one side, flip and cook 30 second");
+        addRecipe("Pancakes","Pancake Mix, Water","1)Mix water and pancake mix thoroughly\n2)Pour batter in hot oiled pan\n3)Cook 60 seconds one side, flip and cook 30 seconds");
         RecipeTitles.add(2,"Carne Asada Tacos");
         addRecipe("Carne Asada Tacos","Flank Steak, Onions, Green Peppers","1)Season steak with spices(not just salt and pepper)\n2)Chop up onions and peppers\n3)Grill Steak till desired color\n4)Saute onions and peppers\n5)Grill corn tortillas and stack steak and vegetables");
         RecipeTitles.add(3,"Cheese Burger");
@@ -198,101 +196,9 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
         return super.onOptionsItemSelected(item);
     }
 
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
-        Button filterB = (Button) findViewById(R.id.filterbutton);
-
-        filterB.setOnClickListener(new View.OnClickListener())
-        {
-            @Override
-                    public void onClick(View view)
-            {
-                adapter.filter();/// our problem is we cant reach shit from different classes
-            }
-
-
-        }
-
-        View view = inflater.inflate(R.layout.RecipeMenuActivity, container, false); // ask kosta about this
-
-        for(int i =0; i<RecipeList.size();i++)
-        {
-            ingredientsCopy.add(RecipeList.get(i).getIngredients());
-        }
-
-        adapter = new RecipeInfoAdapter(this, android.R.layout.simple_list_item_1, ingredientsCopy);
-
-       listView = (listView) view.findViewById(R.id.lv);
-
-       listView.setAdapter(adapter);
-       listView.setTextFilterEnabled(true);
-
-       return view;
-
-    }
-}
-
-public class RecipeInfoAdapter extends ArrayAdapter<String>
-{
-    private Context context;
-    private ArrayList<String> all_values;
-    private ArrayList<String> filter_values;
-
-    public RecipeInfoAdapter(Context context, ArrayList<String> values)
-    {
-        super(context,0,values);
-        this.context=context;
-        all_values = new ArrayList<String>;
-        all_values.addAll(values);
-        //filter_values = all_values.co;
-        ArrayList <String> filter_values = new ArrayList<>(all_values);
-
-
-    }
-
-    @Override
-
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.lv, parent, false); // make an inflator in XML, fill in lv w/ layout
-        TextView txtTitles = (TextView) rowView.findViewById(R.id.lv);
-
-
-        txtTitles.setText(filter_values.get(position).Title); // cant reach ask kosta how to reach title? Intent sharing or moving class into Recipe Info
-
-        return rowView;
-
-    }
-
-    @Override
-    public int getCount()
-    {
-        return filter_values.size();
-    }
-
-    public void noFilter()
-    {
-        filter_values = all_values;
-        notifyDataSetChanged();
-    }
-
-    private void filter()
-    {
-        filter_values = new ArrayList<>();
-        for(String i: all_values)
-        {
-            if(ingredientsCopy )  // here we want to compare ingredientsCopy array to ingredientsList (which we have not reached yet)
-            {
-                filter_values.add(i);
-            }
-        }
-        notifyDataSetChanged();
-    }
-
-
-
-
 
 }
+
+
+
 
