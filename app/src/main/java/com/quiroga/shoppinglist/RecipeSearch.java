@@ -11,9 +11,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ToggleButton;
 
 public class RecipeSearch extends Activity {
 
@@ -23,6 +27,7 @@ public class RecipeSearch extends Activity {
     String[] Title;
     String[] Ingredients;
     String[] Directions;
+    ToggleButton t; // bas
 
     ArrayList<RecipeInfo> arrayList = new ArrayList<RecipeInfo>();
 
@@ -50,6 +55,7 @@ public class RecipeSearch extends Activity {
 
         //binds the adapter to the ListView
         list.setAdapter(adapter);
+        list.setTextFilterEnabled(true); // bas, enables filtering method
 
         //locate the editText in listview_main.xml
         editsearch = (EditText)findViewById(R.id.search);
@@ -63,8 +69,8 @@ public class RecipeSearch extends Activity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
+
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -75,6 +81,38 @@ public class RecipeSearch extends Activity {
         });
 
     }//end of OnCreate
+              //  onCreateView(inflator, container);????
+
+// onCreateView is never called? I think this is bc you have to pass it some shit
+
+        public View OnCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
+        {
+            View view = inflater.inflate(R.layout.listview_main,container, false);
+            t=(ToggleButton) findViewById(R.id.toggleButton);
+            //return inflator.inflate(R.layout.listview_main, container, false);
+
+            t.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    boolean on = ((ToggleButton)view).isChecked();
+
+                    if(on)
+                    {
+                        adapter.ingredientsFilter(); // this will be created in the adapter class
+                        t.setTextOff("No Filter");
+                        t.setChecked(true);
+                    }
+                    else
+                    {
+                        t.setTextOn("Filter");
+                        t.setChecked(false);
+                    }
+                }
+            });
+            return view;
+
+        }
 
     @Override
    public boolean onCreateOptionsMenu(Menu menu) {

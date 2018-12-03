@@ -7,7 +7,8 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-public class SingleItemView extends Activity{
+public class SingleItemView extends Activity
+{
     TextView txtTitle;
     TextView txtIngredients;
     TextView txtDirections;

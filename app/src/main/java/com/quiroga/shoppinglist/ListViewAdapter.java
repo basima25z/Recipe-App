@@ -10,16 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter //implements Filterable // implements filterable to get setTExtChange in RecipeSearch
+ {
 
-    Context mContext;
+     Context mContext;
     LayoutInflater inflater;
     private List<RecipeInfo> recipeInfoList = null;
     private ArrayList<RecipeInfo> arrayList;
+    private ArrayList <String> filter_values;
 
     public ListViewAdapter(Context context, List<RecipeInfo> recipeInfoList){
         mContext = context;
@@ -104,5 +108,30 @@ public class ListViewAdapter extends BaseAdapter {
             }
         }
         notifyDataSetChanged();
+    }
+
+    public void ingredientsFilter()
+    {
+        IngredientsActivity IAobject = new IngredientsActivity(mContext.getApplicationContext()); //IngredientsActivity.getApplicationContext()
+        filter_values = new ArrayList<>();
+        for(int i=0;i<recipeInfoList.size();i++)
+        {
+            if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).get(i).equals(recipeInfoList.get(i).getIngredients()))
+            {
+                filter_values.add(recipeInfoList.get(i).getIngredients());
+            }
+            else if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).isEmpty())
+            {
+                Toast.makeText(mContext.getApplicationContext(), "Please add to your ingredients list", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(mContext.getApplicationContext(), "No matches found", Toast.LENGTH_LONG).show();
+
+            }
+
+        }
+        notifyDataSetChanged();
+
     }
 }

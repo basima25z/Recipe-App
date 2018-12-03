@@ -40,6 +40,14 @@ public class IngredientsActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter = null;
     ListView listView = null;
     DrawerLayout drawerLayout;
+    private Context mContent;
+
+
+    public IngredientsActivity(Context context)
+    {
+        this.mContent = context;
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
