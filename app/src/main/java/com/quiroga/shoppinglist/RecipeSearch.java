@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ToggleButton;
+import android.content.Intent;
 
 public class RecipeSearch extends Activity {
 
@@ -28,12 +29,13 @@ public class RecipeSearch extends Activity {
     String[] Ingredients;
     String[] Directions;
     ToggleButton t; // bas
+    int i=1;
 
     ArrayList<RecipeInfo> arrayList = new ArrayList<RecipeInfo>();
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_main);//HAVENT DONE THIS YET
 
         Title = new String[] {"Chicken Alfredo", "Pancakes", "Carne Asada Tacos"};
@@ -80,39 +82,76 @@ public class RecipeSearch extends Activity {
             }
         });
 
+        t=(ToggleButton) findViewById(R.id.toggleButton);
+        //return inflator.inflate(R.layout.listview_main, container, false);
+
+        t.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                boolean on = ((ToggleButton)view).isChecked();
+
+                if(on)
+                {
+                    //adapter.ingredientsFilter(); // this will be created in the adapter class --> send to new sceen, would change intent
+                    Intent nextScreen = new Intent (RecipeSearch.this, IngSearch.class);
+                    //this.startActivityForResult(i, nextScreen);
+                    startActivity(nextScreen);
+                    t.setTextOff("No Filter");
+                    t.setChecked(true);
+                }
+                else
+                {
+                    t.setTextOn("Filter");
+                    t.setChecked(false);
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
     }//end of OnCreate
               //  onCreateView(inflator, container);????
 
 // onCreateView is never called? I think this is bc you have to pass it some shit
 
-        public View OnCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
-        {
-            View view = inflater.inflate(R.layout.listview_main,container, false);
-            t=(ToggleButton) findViewById(R.id.toggleButton);
-            //return inflator.inflate(R.layout.listview_main, container, false);
-
-            t.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view)
-                {
-                    boolean on = ((ToggleButton)view).isChecked();
-
-                    if(on)
-                    {
-                        adapter.ingredientsFilter(); // this will be created in the adapter class
-                        t.setTextOff("No Filter");
-                        t.setChecked(true);
-                    }
-                    else
-                    {
-                        t.setTextOn("Filter");
-                        t.setChecked(false);
-                    }
-                }
-            });
-            return view;
-
-        }
+//        public View OnCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
+//        {
+//            View view = inflater.inflate(R.layout.listview_main,container, false);
+//            t=(ToggleButton) findViewById(R.id.toggleButton);
+//            //return inflator.inflate(R.layout.listview_main, container, false);
+//
+//            t.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view)
+//                {
+//                    boolean on = ((ToggleButton)view).isChecked();
+//
+//                    if(on)
+//                    {
+//                        adapter.ingredientsFilter(); // this will be created in the adapter class
+//                        t.setTextOff("No Filter");
+//                        t.setChecked(true);
+//                    }
+//                    else
+//                    {
+//                        t.setTextOn("Filter");
+//                        t.setChecked(false);
+//                    }
+//                }
+//            });
+//            return view;
+//
+//        }
 
     @Override
    public boolean onCreateOptionsMenu(Menu menu) {
