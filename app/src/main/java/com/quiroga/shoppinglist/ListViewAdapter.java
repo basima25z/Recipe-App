@@ -23,7 +23,9 @@ public class ListViewAdapter extends BaseAdapter //implements Filterable // impl
     LayoutInflater inflater;
     private List<RecipeInfo> recipeInfoList = null;
     private ArrayList<RecipeInfo> arrayList;
-    private ArrayList <String> filter_values;
+    private ArrayList <String> filter_ing;
+    private ArrayList<String> filter_title;
+    private ArrayList<String> filter_dir;
 
     public ListViewAdapter(Context context, List<RecipeInfo> recipeInfoList){
         mContext = context;
@@ -113,12 +115,15 @@ public class ListViewAdapter extends BaseAdapter //implements Filterable // impl
     public void ingredientsFilter()
     {
         IngredientsActivity IAobject = new IngredientsActivity(mContext.getApplicationContext()); //IngredientsActivity.getApplicationContext()
-        filter_values = new ArrayList<>();
+        filter_ing = new ArrayList<>();
         for(int i=0;i<recipeInfoList.size();i++)
         {
             if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).get(i).equals(recipeInfoList.get(i).getIngredients()))
             {
-                filter_values.add(recipeInfoList.get(i).getIngredients());
+
+                filter_ing.add(recipeInfoList.get(i).getIngredients());
+                filter_dir.add(recipeInfoList.get(i).getDirections());
+                filter_title.add(recipeInfoList.get(i).getTitle());
             }
             else if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).isEmpty())
             {
