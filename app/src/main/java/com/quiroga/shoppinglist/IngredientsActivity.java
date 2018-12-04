@@ -42,6 +42,8 @@ public class IngredientsActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private Context mContent;
 
+    public IngredientsActivity(){
+    }
 
     public IngredientsActivity(Context context)
     {
@@ -59,7 +61,7 @@ public class IngredientsActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         getLayoutInflater().inflate(activityMain, drawerLayout);
 
-        //ingredientList = getArrayValue(getApplicationContext());
+        ingredientList = getArrayValue(getApplicationContext());
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredientList);
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
