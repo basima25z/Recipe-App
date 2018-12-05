@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,23 +13,24 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeClickActivity extends AppCompatActivity {
     String TitleStr = null;
     ArrayList<String> FavRecipes = new ArrayList<>();
-
+    public static final Boolean togglestatus = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipeclicklayout);
+
+        final ToggleButton toggleButton = findViewById(R.id.myToggleButton);
+        SharedPreferences sharedPrefs = getSharedPreferences("togglestatus", MODE_PRIVATE);
+        toggleButton.setChecked(sharedPrefs.getBoolean("status", true));
 
         Intent intent = getIntent();
         //final ArrayList<String> FavRecipes = intent.getStringArrayListExtra("FavArray");
@@ -54,10 +56,22 @@ public class RecipeClickActivity extends AppCompatActivity {
             }
         }
 
-        final ToggleButton toggleButton = findViewById(R.id.myToggleButton);
-        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.star));
-
-
+        //toggleButton.setBackgroundResource(R.drawable.star);
+        toggleButton.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            {
+                if (toggleButton.isChecked()) {
+                    toggleButton.setBackgroundResource(R.drawable.fillstar);
+                    SharedPreferences.Editor editor = getSharedPreferences("togglestatus", MODE_PRIVATE).edit();
+                    editor.putBoolean("status", true).commit();
+                } else {
+                    toggleButton.setBackgroundResource(R.drawable.star);
+                    SharedPreferences.Editor editor = getSharedPreferences("togglestatus", MODE_PRIVATE).edit();
+                    editor.putBoolean("status", false).commit();
+                }
+            }
+        }
+        });
         /*Button backbutton = findViewById(R.id.back);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override

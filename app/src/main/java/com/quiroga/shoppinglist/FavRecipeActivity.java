@@ -20,7 +20,7 @@ public class FavRecipeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.favrecipelayout);
+        setContentView(R.layout.listviewwithfavoriteact);
 
         Intent intent = getIntent();
         final String FaveRecipes = intent.getStringExtra("FavRecipesMenu");

@@ -14,5 +14,15 @@
     <string name="titlelabel">"Title: "</string>
     <string name="ingredientslabel">"Ingredients:"</string>
     <string name="directionslabel">"Directions:"</string>
-    <string name="title_activity_request">Request</string>
-</resources>
+
+
+        <string name="hello_world">Hello world!</string>
+        <string name="On_Off">ON/OFF</string>
+        <string-array name="Strings">
+            <item >Chicken Alfredo</item>
+            <item >Pancakes</item>
+            <item >Carne Asada Tacos</item>
+            <item >Cheese Burger</item>
+        </string-array>
+    </resources>
+

@@ -2,6 +2,7 @@ package com.quiroga.shoppinglist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -40,26 +41,6 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
     String Recipe = "0";
     ListView listView;
     DrawerLayout drawerLayout;
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-
-        savedInstanceState.putStringArrayList("RecipeTitles", RecipeTitles);
-        savedInstanceState.putString("RecipeList", Recipe);
-        savedInstanceState.putStringArrayList("FavRecipes", FavRecipes);
-    }
-
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        ArrayList<String> RecipeTitles = savedInstanceState.getStringArrayList("RecipeTitles");
-        ArrayList<String> FavRecipes = savedInstanceState.getStringArrayList("FavRecipes");
-        String Recipe = savedInstanceState.getString("Recipe");
-        Type type = new TypeToken<ArrayList<RecipeInfo>>(){}.getType();
-        ArrayList<RecipeInfo> RecipeList = gson.fromJson(Recipe, type);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +130,8 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
             }
         });
 
+        SharedPreferences sharedPrefs = getSharedPreferences("togglestatus", MODE_PRIVATE);
+
         Button AddRecipes = findViewById(R.id.AddRecipe);
         AddRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,10 +147,10 @@ public class RecipeMenuActivity extends AppCompatActivity // do we extend fragme
         FavRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Gson gson = new Gson();
-                final String FavRecipeStr = gson.toJson(FavRecipes);
+                //Gson gson = new Gson();
+                //final String FavRecipeStr = gson.toJson(FavRecipes);
 
-                Intent intent = new Intent(RecipeMenuActivity.this, FavRecipeActivity.class);
+                Intent intent = new Intent(RecipeMenuActivity.this, listviewwithfavorite.class);
                 //if (FavRecipeStr != null)
                     //intent.putExtra("FavRecipesMenu", FavRecipeStr); // sends array to display titles
                 startActivity(intent);

@@ -37,6 +37,11 @@
             android:name=".RecipeClickActivity"
             android:parentActivityName=".RecipeMenuActivity"></activity>
         <activity
+            android:name=".listviewwithfavorite"
+            android:parentActivityName=".RecipeMenuActivity">
+
+        </activity>
+        <activity
             android:name=".RecipeHistory"
             android:label="@string/recipeHistory"
             android:parentActivityName=".MainActivity"></activity>
