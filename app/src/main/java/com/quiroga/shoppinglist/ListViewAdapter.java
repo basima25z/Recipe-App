@@ -16,7 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
-public class ListViewAdapter extends BaseAdapter //implements Filterable // implements filterable to get setTExtChange in RecipeSearch
+public class ListViewAdapter extends BaseAdapter
  {
 
      Context mContext;
@@ -66,10 +66,10 @@ public class ListViewAdapter extends BaseAdapter //implements Filterable // impl
         final ViewHolder holder;
         if(view == null){
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.listview_item,null); //HAVENT DONE THIS YET
+            view = inflater.inflate(R.layout.listview_item,null);
             //locate the TextViews in listview_item.xml
             holder.Title = (TextView)view.findViewById(R.id.title);
-            holder.Ingredients = (TextView)view.findViewById(R.id.ingredients);//CHECK ON THIS
+            holder.Ingredients = (TextView)view.findViewById(R.id.ingredients);
             holder.Directions = (TextView)view.findViewById(R.id.directions);
             view.setTag(holder);
         }
@@ -86,14 +86,7 @@ public class ListViewAdapter extends BaseAdapter //implements Filterable // impl
             @Override
             public void onClick(View arg0) {
                 //send single item click data to SingleItemView Class
-                Intent intent = new Intent(mContext, SingleItemView.class);
-                //Pass all data title,ingredients, and directions
-                intent.putExtra("Title:",(recipeInfoList.get(position).getTitle()));
-                intent.putExtra("Ingredients:",(recipeInfoList.get(position).getIngredients()));
-                intent.putExtra("Directions:",(recipeInfoList.get(position).getDirections()));
-
-                //pass all data flag and start SingleItemView class
-                mContext.startActivity(intent);
+               Toast.makeText(mContext, "280 Calories", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -116,31 +109,5 @@ public class ListViewAdapter extends BaseAdapter //implements Filterable // impl
         notifyDataSetChanged();
     }
 
-    public void ingredientsFilter()
-    {
-        IngredientsActivity IAobject = new IngredientsActivity(mContext.getApplicationContext()); //IngredientsActivity.getApplicationContext()
-        filter_ing = new ArrayList<>();
-        for(int i=0;i<recipeInfoList.size();i++)
-        {
-            if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).get(i).equals(recipeInfoList.get(i).getIngredients()))
-            {
 
-                filter_ing.add(recipeInfoList.get(i).getIngredients());
-                filter_dir.add(recipeInfoList.get(i).getDirections());
-                filter_title.add(recipeInfoList.get(i).getTitle());
-            }
-            else if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).isEmpty())
-            {
-                Toast.makeText(mContext.getApplicationContext(), "Please add to your ingredients list", Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(mContext.getApplicationContext(), "No matches found", Toast.LENGTH_LONG).show();
-
-            }
-
-        }
-        notifyDataSetChanged();
-
-    }
 }

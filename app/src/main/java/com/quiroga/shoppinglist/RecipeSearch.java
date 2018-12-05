@@ -24,7 +24,7 @@ import android.content.Intent;
 public class RecipeSearch extends Activity {
 
     ListView list;
-    ListViewAdapter adapter;//HAVENT DONE THIS YET
+    ListViewAdapter adapter;
     EditText editsearch;
     String[] Title;
     String[] Ingredients;
@@ -38,14 +38,14 @@ public class RecipeSearch extends Activity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview_main);//HAVENT DONE THIS YET
+        setContentView(R.layout.listview_main);
 
         Title = new String[] {"Chicken Alfredo", "Pancakes", "Carne Asada Tacos"};
         Ingredients = new String[]{"Chicken, Pasta, Alfredo Sauce", "Pancake Mix, Water", "Flank Steak, Onions, Green Peppers"};
         Directions = new String[]{"1) Boil water and cook pasta\n2)Saute chicken till well done\n3)Mix chicken, pasta and sauce", "1)Mix water and pancake mix thoroughly\n2)Pour batter in hot oiled pan\n3)Cook 60 seconds one side, flip and cook 30 seconds", "1)Season steak with spices(not just salt and pepper)\n2)Chop up onions and peppers\n3)Grill Steak till desired color\n4)Saute onions and peppers\n5)Grill corn tortillas and stack steak and vegetables"};
 
         //locate the ListView in the listview_main.xml
-        list = (ListView)findViewById(R.id.listview);//HAVENT DONE THIS YET
+        list = (ListView)findViewById(R.id.listview);
 
 
         for(int i = 0; i<Title.length; i++)
@@ -59,7 +59,7 @@ public class RecipeSearch extends Activity {
 
         //binds the adapter to the ListView
         list.setAdapter(adapter);
-        //list.setTextFilterEnabled(true); // bas, enables filtering method
+
 
         //locate the editText in listview_main.xml
         editsearch = (EditText)findViewById(R.id.search);
@@ -84,18 +84,15 @@ public class RecipeSearch extends Activity {
             }
         });
 
-        //t=(ToggleButton) findViewById(R.id.toggleButton);
 
-        //return inflator.inflate(R.layout.listview_main, container, false);
         filter =(Button)findViewById(R.id.filterbutton);
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                //adapter.ingredientsFilter(); // this will be created in the adapter class --> send to new sceen, would change intent
+
                     Intent nextScreen = new Intent (RecipeSearch.this, IngSearch.class);
-                    //this.startActivityForResult(i, nextScreen);
                     startActivity(nextScreen);
 
             }
