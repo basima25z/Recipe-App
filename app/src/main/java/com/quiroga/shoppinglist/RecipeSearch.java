@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ToggleButton;
@@ -28,7 +29,8 @@ public class RecipeSearch extends Activity {
     String[] Title;
     String[] Ingredients;
     String[] Directions;
-    ToggleButton t; // bas
+    //ToggleButton t; // bas
+    Button filter;
     int i=1;
 
     ArrayList<RecipeInfo> arrayList = new ArrayList<RecipeInfo>();
@@ -57,7 +59,7 @@ public class RecipeSearch extends Activity {
 
         //binds the adapter to the ListView
         list.setAdapter(adapter);
-        list.setTextFilterEnabled(true); // bas, enables filtering method
+        //list.setTextFilterEnabled(true); // bas, enables filtering method
 
         //locate the editText in listview_main.xml
         editsearch = (EditText)findViewById(R.id.search);
@@ -82,29 +84,20 @@ public class RecipeSearch extends Activity {
             }
         });
 
-        t=(ToggleButton) findViewById(R.id.toggleButton);
-        //return inflator.inflate(R.layout.listview_main, container, false);
+        //t=(ToggleButton) findViewById(R.id.toggleButton);
 
-        t.setOnClickListener(new View.OnClickListener() {
+        //return inflator.inflate(R.layout.listview_main, container, false);
+        filter =(Button)findViewById(R.id.filterbutton);
+
+        filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                boolean on = ((ToggleButton)view).isChecked();
-
-                if(on)
-                {
-                    //adapter.ingredientsFilter(); // this will be created in the adapter class --> send to new sceen, would change intent
+                //adapter.ingredientsFilter(); // this will be created in the adapter class --> send to new sceen, would change intent
                     Intent nextScreen = new Intent (RecipeSearch.this, IngSearch.class);
                     //this.startActivityForResult(i, nextScreen);
                     startActivity(nextScreen);
-                    t.setTextOff("No Filter");
-                    t.setChecked(true);
-                }
-                else
-                {
-                    t.setTextOn("Filter");
-                    t.setChecked(false);
-                }
+
             }
         });
 

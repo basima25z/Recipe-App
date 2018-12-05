@@ -35,7 +35,10 @@ public class ListViewAdapter extends BaseAdapter //implements Filterable // impl
         this.arrayList.addAll(recipeInfoList);
     }
 
-    public class ViewHolder{
+
+
+
+     public class ViewHolder{
         TextView Title;
         TextView Ingredients;
         TextView Directions;
@@ -59,6 +62,7 @@ public class ListViewAdapter extends BaseAdapter //implements Filterable // impl
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
+        Toast.makeText(mContext.getApplicationContext(), "reached", Toast.LENGTH_LONG).show();
         final ViewHolder holder;
         if(view == null){
             holder = new ViewHolder();

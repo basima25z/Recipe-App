@@ -19,18 +19,12 @@
             android:layout_height="fill_parent"
             android:layout_below="@+id/search" />
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
+    <Button
+        android:id="@+id/filterbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="31dp"
-        android:layout_marginEnd="20dp"
-        android:checked="true"
-        android:text="On"
-        android:textOff="No Filter"
-        android:textOn="Filter"
-        tools:text="On" />
+        android:text="FILTER" />
 
 </RelativeLayout>
