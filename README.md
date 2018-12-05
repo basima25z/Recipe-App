@@ -27,6 +27,8 @@ We were able to deliver on user story #10, but since doing so affected the heira
 
 
 Iteration 3:
+
+Video: https://www.screencast.com/t/VsXCaT6oyfR
 For user story number two, Recipe Search With Ingredients, which delivered the primary function of the app, the difficulty was connecting it with user story number 6, Searching Without Ingredients. My group member and I both used the same adapter class to filter the list to be displayed. This was difficult at first in relation to the flow of the program because our parts relied on each other. It was also difficult to retrieve the ingredients list array from the ingredients activity, however, with shared preferences, that task became easy. 
 
 For user story number six, Searching Without Ingredients, the primary task was to be able to have the user be able to type to a search bar to filter the list view. For this user story along with user story number two, we also wanted to add images, however it became difficult as it required more work because it would not coincide with the adapter class properly. The filter method was also challenging as it was hard figuring out how to obtain arraylist from other activities. We also wanted to add another class to be able to display the recipe larger on another screen, however, we were unable to figure out how to connect and send the data. 
@@ -34,6 +36,7 @@ For user story number six, Searching Without Ingredients, the primary task was t
 In relation to lint, for user story number six and two, one of the errors that came up was using hardcoded Strings. The reason we didn’t fix this is due to the fact that it would not cause issues within our code. When we ran lint, we also saw that there were spelling errors in the XML file as well as the .json files; however, we didn’t address these errors as we did not make the files. We also had a few errors in relation to layout, it told us to change layout_toRightOf to layout_toEndOf; however, when we did, it would not format correctly, so we changed it back to the former design layout. 
 
 We also had two user stories left to implement which were suppose to be finished by the other two group members, however, due to unfortunate circumstances, they were both unable to complete their tasks. Instead, the other group members decided to come up with one new user stories they could implement in a short amount of time, 1 hour to be exact. We decided to implement a new screen so that they user can request for new recipes to be added to the database. 
+
 
 
 
