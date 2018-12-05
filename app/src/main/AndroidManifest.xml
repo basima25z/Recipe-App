@@ -58,22 +58,14 @@
             android:parentActivityName=".MainActivity">
 
         </activity>
-        <activity
-            android:name=".SingleItemView">
 
-        </activity>
         <!--<activity-->
             <!--android:name=".SingleItemView">-->
         <!--</activity>-->
-        <activity
-            android:name=".IngSingleItemView">
-        </activity>
-        <activity
-            android:name=".IngAdapter">
-        </activity>
-        <activity
-            android:name=".IngSearch">
-        </activity>
+                <activity
+        android:name=".IngSearch">
+    </activity>
+
 
     </application>
 

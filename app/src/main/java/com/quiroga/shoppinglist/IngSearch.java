@@ -29,7 +29,7 @@ public class IngSearch extends Activity  {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
-        Toast.makeText(getApplicationContext(), "reached", Toast.LENGTH_LONG).show();
+
         super.onCreate(savedInstanceState);
        // Toast.makeText(getApplicationContext(), "reached", Toast.LENGTH_LONG).show();
         setContentView(R.layout.listview_ing);//lol yeah maybe ??? thinking dont need it bc not trying show before filter

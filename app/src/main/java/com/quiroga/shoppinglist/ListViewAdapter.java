@@ -62,7 +62,7 @@ public class ListViewAdapter extends BaseAdapter
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
-        Toast.makeText(mContext.getApplicationContext(), "reached", Toast.LENGTH_LONG).show();
+
         final ViewHolder holder;
         if(view == null){
             holder = new ViewHolder();
@@ -96,18 +96,57 @@ public class ListViewAdapter extends BaseAdapter
     public void filter(String charText){
         charText = charText.toLowerCase(Locale.getDefault());
         recipeInfoList.clear();
-        if(charText.length()==0){
+       // Toast.makeText(mContext.getApplicationContext(), "No Matches Found", Toast.LENGTH_LONG).show();
+
+        if(charText.length()==0)
+        {
+
             recipeInfoList.addAll(arrayList);
+
         }
+//        else if(charText.isEmpty())
+//        {
+//            Toast.makeText(mContext.getApplicationContext(), "Add to you ingredients list", Toast.LENGTH_LONG).show();
+//        }
         else{
             for(RecipeInfo ri : arrayList){
                 if(ri.getTitle().toLowerCase(Locale.getDefault()).contains(charText)){
                     recipeInfoList.add(ri);
                 }
             }
+          //  Toast.makeText(mContext, "No Matches Found", Toast.LENGTH_LONG).show();
+
         }
         notifyDataSetChanged();
     }
+
+     public void ingredientsFilter()
+     {
+         IngredientsActivity IAobject = new IngredientsActivity(mContext.getApplicationContext()); //IngredientsActivity.getApplicationContext()
+         filter_ing = new ArrayList<>();
+         for(int i=0;i<recipeInfoList.size();i++)
+         {
+             if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).get(i).equals(recipeInfoList.get(i).getIngredients()))
+             {
+
+                 filter_ing.add(recipeInfoList.get(i).getIngredients());
+                 filter_dir.add(recipeInfoList.get(i).getDirections());
+                 filter_title.add(recipeInfoList.get(i).getTitle());
+             }
+             else if(IngredientsActivity.getArrayValue(mContext.getApplicationContext()).isEmpty())
+             {
+                 Toast.makeText(mContext.getApplicationContext(), "Please add to your ingredients list", Toast.LENGTH_LONG).show();
+             }
+             else
+             {
+                 Toast.makeText(mContext.getApplicationContext(), "No matches found", Toast.LENGTH_LONG).show();
+
+             }
+
+         }
+         notifyDataSetChanged();
+
+     }
 
 
 }
