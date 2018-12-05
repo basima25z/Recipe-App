@@ -21,52 +21,37 @@
         <activity
             android:name=".FavRecipeActivity"
             android:label="@string/favorite"
-            android:parentActivityName=".RecipeMenuActivity">
-
-        </activity>
+            android:parentActivityName=".RecipeMenuActivity"></activity>
         <activity
             android:name=".IngredientsActivity"
             android:label="@string/ingredients"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".RecipeMenuActivity"
             android:label="@string/recipes"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".AddRecipeActivity"
-            android:parentActivityName=".RecipeMenuActivity">
-
-        </activity>
+            android:parentActivityName=".RecipeMenuActivity"></activity>
         <activity
             android:name=".RecipeClickActivity"
-            android:parentActivityName=".RecipeMenuActivity">
-
-        </activity>
+            android:parentActivityName=".RecipeMenuActivity"></activity>
         <activity
             android:name=".RecipeHistory"
             android:label="@string/recipeHistory"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".RecipeSearch"
             android:label="@string/RecipeSearch"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"></activity>
 
-        </activity>
-
-        <!--<activity-->
-            <!--android:name=".SingleItemView">-->
-        <!--</activity>-->
-                <activity
-        android:name=".IngSearch">
-    </activity>
-
-
+        <!-- <activity -->
+        <!-- android:name=".SingleItemView"> -->
+        <!-- </activity> -->
+        <activity android:name=".IngSearch"></activity>
+        <activity
+            android:name=".Request"
+            android:label="@string/title_activity_request"></activity>
     </application>
 
 </manifest>

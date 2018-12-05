@@ -14,4 +14,5 @@
     <string name="titlelabel">"Title: "</string>
     <string name="ingredientslabel">"Ingredients:"</string>
     <string name="directionslabel">"Directions:"</string>
+    <string name="title_activity_request">Request</string>
 </resources>

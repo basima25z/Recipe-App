@@ -31,6 +31,7 @@ public class RecipeSearch extends Activity {
     String[] Directions;
     //ToggleButton t; // bas
     Button filter;
+    Button request;
     int i=1;
 
     ArrayList<RecipeInfo> arrayList = new ArrayList<RecipeInfo>();
@@ -97,6 +98,20 @@ public class RecipeSearch extends Activity {
 
             }
         });
+
+        request = (Button)findViewById(R.id.request);
+
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+
+                Intent nextScreen = new Intent (RecipeSearch.this, Request.class);
+                startActivity(nextScreen);
+
+            }
+        });
+
 
 
 
