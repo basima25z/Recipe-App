@@ -1,11 +1,10 @@
 package com.quiroga.shoppinglist;
 
 
-import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
-import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.test.filters.LargeTest;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -18,78 +17,76 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anything;
-import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class RHTest4 {
-//The filter button takes the user to a new screen where recipes are shown based off the user's ingredients
+public class FilterTest2 {
+//When the user has no ingredients, then the filter button displays all of the recipes
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void RHTest4() {
-        ViewInteraction floatingActionButton = onView(
-                allOf(withId(R.id.fab),
+    public void filterTest2() {
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(R.id.RecipeSearchButton), withText("Recipe Search"),
+                        childAtPosition(
+                                allOf(withId(R.id.ConstraintLayout),
+                                        childAtPosition(
+                                                withId(R.id.drawer_layout),
+                                                1)),
+                                7),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        pressBack();
+
+        ViewInteraction button = onView(
+                allOf(withId(R.id.filterbutton), withText("FILTER"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                1),
+                                2),
                         isDisplayed()));
-        floatingActionButton.perform(click());//clicking on the + button
+        button.perform(click());
 
-        ViewInteraction editText = onView(
+        ViewInteraction relativeLayout = onView(
                 allOf(childAtPosition(
-                        allOf(withId(android.R.id.custom),
+                        allOf(withId(R.id.inglistview),
                                 childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
+                                        IsInstanceOf.<View>instanceOf(android.widget.RelativeLayout.class),
                                         0)),
                         0),
                         isDisplayed()));
-        editText.perform(replaceText("test"), closeSoftKeyboard());//typing test
+        relativeLayout.check(matches(isDisplayed()));
 
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(android.R.id.button1), withText("OK"),
-                        childAtPosition(
+        ViewInteraction relativeLayout2 = onView(
+                allOf(childAtPosition(
+                        allOf(withId(R.id.inglistview),
                                 childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                3)));
-        appCompatButton.perform(scrollTo(), click());//clicking ok
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.shareButton), withText("Share"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
+                                        IsInstanceOf.<View>instanceOf(android.widget.RelativeLayout.class),
+                                        0)),
+                        1),
                         isDisplayed()));
-        appCompatButton2.perform(click());//clicking share button
+        relativeLayout2.check(matches(isDisplayed()));
 
-        ViewInteraction button = onView(
-                allOf(withId(R.id.shareButton),
-                        childAtPosition(
+        ViewInteraction relativeLayout3 = onView(
+                allOf(childAtPosition(
+                        allOf(withId(R.id.inglistview),
                                 childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
+                                        IsInstanceOf.<View>instanceOf(android.widget.RelativeLayout.class),
+                                        0)),
+                        2),
                         isDisplayed()));
-        button.check(matches(isDisplayed()));
+        relativeLayout3.check(matches(isDisplayed()));
 
     }
 

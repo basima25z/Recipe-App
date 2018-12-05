@@ -29,7 +29,7 @@ import static org.hamcrest.Matchers.allOf;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class RSTest3 {
-
+//When the user starts typing something that doesn't match with the recipes, then no results are shown
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 

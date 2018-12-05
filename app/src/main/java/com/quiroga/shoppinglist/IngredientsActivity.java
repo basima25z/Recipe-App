@@ -66,6 +66,8 @@ public class IngredientsActivity extends AppCompatActivity {
         listView =  findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();

@@ -64,7 +64,7 @@ public class IngSearch extends Activity  {
         }
 
 
-      //  ingAdapter.filter("chicken"); // typing
+        //ingAdapter.filter("chicken"); // typing
         //ingAdapter.filter("water");
        // ingAdapter.ingredientsFilter();
         //listI.setTextFilterEnabled(true);
